@@ -1,0 +1,32 @@
+name: Run Tests
+
+# This tells GitHub when to run the workflow
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  test:
+    # Runs the job on a virtual Linux machine
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Download your repository code onto the virtual machine
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Set up the environment (Example uses Node.js, change if using Python, Go, etc.)
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Step 3: Install project dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Run your project tests
+      - name: Run test script
+        run: npm test

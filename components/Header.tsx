@@ -12,7 +12,6 @@ export default function Header() {
   return (
     <header className="w-full bg-[#0d3b2e] text-white sticky top-0 z-50 shadow-md">
       <div className="max-w-[2202px] mx-auto px-6 md:px-12 lg:px-20 h-24 flex items-center justify-between">
-        
         {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-3">
           <span className="font-serif text-2xl md:text-3xl font-bold uppercase tracking-wider text-white">
@@ -22,17 +21,18 @@ export default function Header() {
 
         {/* Desktop Navigation Links */}
         <nav className="hidden lg:flex items-center gap-4 font-sans text-sm font-semibold uppercase tracking-wider">
-          
           {/* Dropdown Menu Wrapper (Dynamic Events) */}
-          <div 
+          <div
             className="relative py-4"
             onMouseEnter={() => setDropdownOpen(true)}
             onMouseLeave={() => setDropdownOpen(false)}
           >
-            <button 
-              className="flex items-center gap-1.5 text-white px-4 py-2 rounded-full hover:bg-white hover:text-[#0d3b2e] transition-all cursor-pointer"
-            >
-              EVENTS <ChevronDown size={16} className={`transition-transform duration-300 ${dropdownOpen ? "rotate-180" : ""}`} />
+            <button className="flex items-center gap-1.5 text-white px-4 py-2 rounded-full hover:bg-white hover:text-[#0d3b2e] transition-all cursor-pointer">
+              EVENTS{" "}
+              <ChevronDown
+                size={16}
+                className={`transition-transform duration-300 ${dropdownOpen ? "rotate-180" : ""}`}
+              />
             </button>
 
             {/* Dropdown Content Box */}
@@ -56,46 +56,52 @@ export default function Header() {
             )}
           </div>
 
-          <Link href="/about" className="text-white px-4 py-2 rounded-full hover:bg-white hover:text-[#0d3b2e] transition-all">
+          <Link
+            href="/about"
+            className="text-white px-4 py-2 rounded-full hover:bg-white hover:text-[#0d3b2e] transition-all"
+          >
             ABOUT
           </Link>
-          <Link href="/experiences" className="text-white px-4 py-2 rounded-full hover:bg-white hover:text-[#0d3b2e] transition-all">
+          <Link
+            href="/experiences"
+            className="text-white px-4 py-2 rounded-full hover:bg-white hover:text-[#0d3b2e] transition-all"
+          >
             Experience
           </Link>
-          <Link href="/gallery" className="text-white px-4 py-2 rounded-full hover:bg-white hover:text-[#0d3b2e] transition-all">
+          <Link
+            href="/gallery"
+            className="text-white px-4 py-2 rounded-full hover:bg-white hover:text-[#0d3b2e] transition-all"
+          >
             GALLERY
           </Link>
         </nav>
 
         {/* Action CTA */}
         <div className="hidden lg:flex items-center gap-4">
-          <Link 
-            href="/events/tunis" 
+          <Link
+            href="/events/tunis"
             className="bg-[#DE0B1C] text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-[#b20916] transition-all shadow-md"
           >
             TICKET TUNIS
           </Link>
-          
-          <div className="flex items-center gap-2 pl-4 border-l border-white/20 text-xs">
-            <span className="cursor-pointer hover:opacity-80">🇹🇳</span>
-            <span className="cursor-pointer font-bold">🇬🇧</span>
-          </div>
+          {/* GB / Flag switcher removed from here */}
         </div>
 
         {/* Mobile Menu Button */}
-        <button 
+        <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="lg:hidden text-white p-2 focus:outline-none"
         >
           {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
-
       </div>
 
       {/* Mobile Nav Overlay */}
       {mobileMenuOpen && (
         <div className="lg:hidden absolute top-24 left-0 w-full bg-[#0d3b2e] border-b border-white/10 px-6 py-6 flex flex-col gap-4 shadow-xl">
-          <div className="font-bold text-xs uppercase text-white/50 tracking-wider">Events Menu</div>
+          <div className="font-bold text-xs uppercase text-white/50 tracking-wider">
+            Events Menu
+          </div>
           {eventsData.map((loc) => (
             <Link
               key={loc.slug}
@@ -111,9 +117,27 @@ export default function Header() {
               )}
             </Link>
           ))}
-          <Link href="/about" onClick={() => setMobileMenuOpen(false)} className="py-2 text-lg font-serif text-white">ABOUT</Link>
-          <Link href="/specials" onClick={() => setMobileMenuOpen(false)} className="py-2 text-lg font-serif text-white">SPECIALS</Link>
-          <Link href="/press-kit" onClick={() => setMobileMenuOpen(false)} className="py-2 text-lg font-serif text-white">PRESS KIT</Link>
+          <Link
+            href="/about"
+            onClick={() => setMobileMenuOpen(false)}
+            className="py-2 text-lg font-serif text-white"
+          >
+            ABOUT
+          </Link>
+          <Link
+            href="/specials"
+            onClick={() => setMobileMenuOpen(false)}
+            className="py-2 text-lg font-serif text-white"
+          >
+            SPECIALS
+          </Link>
+          <Link
+            href="/press-kit"
+            onClick={() => setMobileMenuOpen(false)}
+            className="py-2 text-lg font-serif text-white"
+          >
+            PRESS KIT
+          </Link>
         </div>
       )}
     </header>

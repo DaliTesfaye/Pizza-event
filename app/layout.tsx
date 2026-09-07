@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Playfair_Display } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -9,7 +11,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Globe Events — Original Design",
+  title: "Street Feast",
   description: "Le Plus grand événement pizza en tunisie.",
 };
 
@@ -21,7 +23,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={playfair.variable}>
       <body className="bg-surface text-customText font-sans antialiased selection:bg-primary selection:text-surface">
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

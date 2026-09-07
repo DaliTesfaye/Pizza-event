@@ -1,11 +1,22 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { Share2, MessageCircle, Send, Globe } from "lucide-react";
+import { motion } from "motion/react";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#1A1A1A] text-white border-t border-[#333333] pt-16 pb-8 px-6 md:px-12 lg:px-20">
-      <div className="max-w-[2202px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-16 border-b border-white/10">
+    <footer className="w-full bg-[#1A1A1A] text-white border-t border-[#333333] pt-16 pb-8 px-6 md:px-12 lg:px-20 overflow-hidden">
+      
+      {/* Main Grid Content */}
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="max-w-[2202px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-16 border-b border-white/10"
+      >
         
         {/* Column 1: Brand & Bio */}
         <div className="flex flex-col items-start">
@@ -15,7 +26,7 @@ export default function Footer() {
           <p className="font-sans text-sm text-white/70 leading-relaxed mb-6">
             The premier festival celebrating the vibrant culture, rich flavors, and incredible diversity of Tunisian street cuisine.
           </p>
-          <div className="inline-block bg-[#DE0B1C] text-[#F2E2D5] text-xs uppercase tracking-widest px-3 py-1.5 rounded-chip font-semibold">
+          <div className="inline-block bg-[#DE0B1C] text-[#F2E2D5] text-xs uppercase tracking-widest px-3 py-1.5 rounded-full font-semibold shadow-sm">
             Edition 2026
           </div>
         </div>
@@ -77,49 +88,38 @@ export default function Footer() {
             Follow The Vibe
           </h3>
           <div className="flex items-center gap-4 mb-6">
-            <a 
-              href="https://facebook.com" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-[#DE0B1C] transition-all duration-350"
-              aria-label="Share"
-            >
-              <Share2 size={18} />
-            </a>
-            <a 
-              href="https://instagram.com" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-[#DE0B1C] transition-all duration-350"
-              aria-label="Community"
-            >
-              <MessageCircle size={18} />
-            </a>
-            <a 
-              href="https://twitter.com" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-[#DE0B1C] transition-all duration-350"
-              aria-label="Channel"
-            >
-              <Send size={18} />
-            </a>
-            <a 
-              href="https://streetfeast.tn" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-[#DE0B1C] transition-all duration-350"
-              aria-label="Website"
-            >
-              <Globe size={18} />
-            </a>
+            {[
+              { href: "https://facebook.com", icon: <Share2 size={18} />, label: "Share" },
+              { href: "https://instagram.com", icon: <MessageCircle size={18} />, label: "Community" },
+              { href: "https://twitter.com", icon: <Send size={18} />, label: "Channel" },
+              { href: "https://streetfeast.tn", icon: <Globe size={18} />, label: "Website" },
+            ].map((social, idx) => (
+              <motion.a 
+                key={idx}
+                href={social.href} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                whileHover={{ scale: 1.15, y: -3 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-[#DE0B1C] transition-colors duration-300 shadow-md"
+                aria-label={social.label}
+              >
+                {social.icon}
+              </motion.a>
+            ))}
           </div>
         </div>
 
-      </div>
+      </motion.div>
 
       {/* Sub-footer: Copyright & Language Flags */}
-      <div className="max-w-[2202px] mx-auto pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/60 font-sans">
+      <motion.div 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+        className="max-w-[2202px] mx-auto pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/60 font-sans"
+      >
         <p>
           © 2026 Street Feast. — TUNISIA STREET CULINARY SRL — P.IVA 10464611218
         </p>
@@ -134,7 +134,7 @@ export default function Footer() {
             <span className="text-base">🇬🇧</span> <span>EN</span>
           </button>
         </div>
-      </div>
+      </motion.div>
     </footer>
   );
 }

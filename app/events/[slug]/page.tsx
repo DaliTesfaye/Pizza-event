@@ -41,6 +41,7 @@ export default function EventDetailPage({ params }: PageProps) {
             alt={event.city}
             fill
             priority
+            sizes="100vw"
             className="object-cover brightness-75 scale-105"
           />
           <div className="absolute inset-0 bg-black/40" />
@@ -115,6 +116,7 @@ export default function EventDetailPage({ params }: PageProps) {
                 src={event.heroImage}
                 alt={`${event.city} landscape`}
                 fill
+                sizes="(max-width: 768px) 320px, 400px"
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
             </div>
@@ -131,6 +133,7 @@ export default function EventDetailPage({ params }: PageProps) {
                 src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80"
                 alt="Street food preparation"
                 fill
+                sizes="(max-width: 768px) 220px, 260px"
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
             </motion.div>

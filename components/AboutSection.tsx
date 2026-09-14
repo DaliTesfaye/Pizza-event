@@ -34,6 +34,7 @@ export default function AboutSection() {
               src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1200&q=80"
               alt="Authentic wood-fired pizza preparation"
               fill
+              sizes="(max-width: 1024px) 80vw, 40vw"
               className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
             />
           </div>
@@ -50,6 +51,7 @@ export default function AboutSection() {
               src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=1000&q=80"
               alt="Fresh artisanal pizza close-up"
               fill
+              sizes="(max-width: 1024px) 60vw, 30vw"
               className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
             />
           </motion.div>

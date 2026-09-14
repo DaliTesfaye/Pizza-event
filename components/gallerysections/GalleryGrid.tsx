@@ -124,6 +124,12 @@ export default function GalleryGrid() {
                 src={item.url}
                 alt={item.title}
                 fill
+                priority={item.id === 2}
+                sizes={
+                  item.span.includes("md:col-span-2") 
+                    ? "(max-width: 768px) 100vw, 66vw" 
+                    : "(max-width: 768px) 100vw, 33vw"
+                }
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
               
@@ -185,6 +191,7 @@ export default function GalleryGrid() {
                 src={selectedItem.url}
                 alt={selectedItem.title}
                 fill
+                sizes="(max-width: 1024px) 100vw, 1024px"
                 className="object-cover"
               />
               
@@ -196,7 +203,7 @@ export default function GalleryGrid() {
                 </div>
               )}
 
-              <div className="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/90 via-black/40 to-transparent text-white">
+              <div className="absolute bottom-0 left-0 w-full p-8 bg-linear-to-t from-black/90 via-black/40 to-transparent text-white">
                 <span className="text-xs font-bold uppercase tracking-widest text-[#DE0B1C] mb-2 block">
                   {selectedItem.category}
                 </span>

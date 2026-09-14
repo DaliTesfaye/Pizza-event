@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "motion/react";
 
 interface MetricItemProps {
@@ -45,10 +46,12 @@ export default function PizzaSection() {
         
         {/* Background Graphic / Pizza Imagery Texture */}
         <div className="absolute inset-0 flex items-center justify-center opacity-90 pointer-events-none">
-          <img 
+          <Image 
             src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1600&q=80" 
             alt="Artisanal pizza background texture" 
-            className="w-full h-full object-cover mix-blend-multiply opacity-65 scale-105"
+            fill
+            sizes="100vw"
+            className="object-cover mix-blend-multiply opacity-65 scale-105"
           />
         </div>
 
